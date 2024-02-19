@@ -1,0 +1,18 @@
+@use "./partials/reset";
+@use "./partials/mixins" as *;
+@use "./partials/var" as *;
+
+.container {
+  max-width: 1480px;
+  padding: 0 $space-m;
+  margin: 0 auto;
+
+  .row {
+    display: flex;
+    margin: 0 calc(-1 * $space-m);
+
+    .col {
+      padding: $space-m;
+    }
+  }
+}
