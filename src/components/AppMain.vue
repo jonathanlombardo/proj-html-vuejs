@@ -4,6 +4,8 @@ import HomeTutoring from "./sections/HomeTutoring.vue";
 import EmpoweringChildren from "./sections/EmpoweringChildren.vue";
 import StudentsStories from "./sections/StudentsStories.vue";
 import CoursesDetails from "./sections/CoursesDetails.vue";
+import PopCourses from "./sections/PopCourses.vue";
+
 // import {store} from './store/index.js'
 
 export default {
@@ -22,7 +24,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails, PopCourses },
 
   created() {
     // ...
@@ -56,6 +58,11 @@ export default {
       <CoursesDetails />
     </div>
   </section>
+  <section class="bg-polig">
+    <div class="container">
+      <PopCourses />
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -71,6 +78,10 @@ section {
     background-position: center top 100px;
     background-repeat: no-repeat;
     background-color: $bg-primary-light;
+  }
+
+  &.bg-polig {
+    background-image: url("../assets/img/background-pattern.jpg");
   }
 }
 </style>
