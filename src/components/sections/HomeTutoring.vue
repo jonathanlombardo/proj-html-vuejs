@@ -34,7 +34,7 @@ export default {
     </h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus veniam, excepturi quod atque, necessitatibus optio quia itaque illum quidem nam ea ullam harum magnam unde dolorem quas, maxime aut iusto?</p>
     <a href="#">Learn more</a>
-    <img src="../../assets/img/h5-img-1.jpg" alt="" />
+    <img src="../../assets/img/h5-img-1.jpg" alt="Students look up" />
   </div>
 </template>
 

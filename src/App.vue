@@ -29,13 +29,13 @@ export default {
 </script>
 
 <template>
-  <app-header class="header">
+  <AppHeader class="header">
     <template #hero>
-      <app-hero class="header-hero" />
+      <AppHero class="header-hero" />
     </template>
-  </app-header>
+  </AppHeader>
 
-  <app-main></app-main>
+  <AppMain></AppMain>
 </template>
 
 <style lang="scss">

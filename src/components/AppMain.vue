@@ -1,6 +1,7 @@
 <script>
 import BoxIco from "./sections/BoxIco.vue";
 import HomeTutoring from "./sections/HomeTutoring.vue";
+import EmpoweringChildren from "./sections/EmpoweringChildren.vue";
 // import {store} from './store/index.js'
 
 export default {
@@ -19,7 +20,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren },
 
   created() {
     // ...
@@ -30,12 +31,17 @@ export default {
 <template>
   <section>
     <div class="container">
-      <box-ico />
+      <BoxIco />
     </div>
   </section>
   <section>
     <div class="container">
-      <home-tutoring />
+      <HomeTutoring />
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <EmpoweringChildren />
     </div>
   </section>
 </template>
