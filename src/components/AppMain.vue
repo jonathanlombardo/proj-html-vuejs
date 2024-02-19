@@ -2,6 +2,7 @@
 import BoxIco from "./sections/BoxIco.vue";
 import HomeTutoring from "./sections/HomeTutoring.vue";
 import EmpoweringChildren from "./sections/EmpoweringChildren.vue";
+import StudentsStories from "./sections/StudentsStories.vue";
 // import {store} from './store/index.js'
 
 export default {
@@ -20,7 +21,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring, EmpoweringChildren },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories },
 
   created() {
     // ...
@@ -44,6 +45,11 @@ export default {
       <EmpoweringChildren />
     </div>
   </section>
+  <section class="stories">
+    <div class="container">
+      <StudentsStories />
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -52,5 +58,13 @@ export default {
 
 section {
   margin-top: $space-xl;
+
+  &.stories {
+    background-image: url(../assets/img/interactive-map-slider-img-1.png);
+    background-size: cover;
+    background-position: center top 100px;
+    background-repeat: no-repeat;
+    background-color: $bg-primary-light;
+  }
 }
 </style>
