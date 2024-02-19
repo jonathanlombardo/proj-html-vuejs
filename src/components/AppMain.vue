@@ -3,6 +3,7 @@ import BoxIco from "./sections/BoxIco.vue";
 import HomeTutoring from "./sections/HomeTutoring.vue";
 import EmpoweringChildren from "./sections/EmpoweringChildren.vue";
 import StudentsStories from "./sections/StudentsStories.vue";
+import CoursesDetails from "./sections/CoursesDetails.vue";
 // import {store} from './store/index.js'
 
 export default {
@@ -21,7 +22,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails },
 
   created() {
     // ...
@@ -48,6 +49,11 @@ export default {
   <section class="stories">
     <div class="container">
       <StudentsStories />
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <CoursesDetails />
     </div>
   </section>
 </template>
