@@ -54,13 +54,10 @@ export default {
 <template>
   <header>
     <div class="container">
-      <app-logo img="logo-light.png" />
-      <nav>
-        <ul class="error" v-if="error.state">
-          <li>{{ error.text }}</li>
-        </ul>
-
-        <ul v-if="!isLoading && !error.state">
+      <div class="error" v-if="error.state">{{ error.text }}</div>
+      <app-logo v-if="!isLoading && !error.state" img="logo-light.png" />
+      <nav v-if="!isLoading && !error.state">
+        <ul>
           <li v-for="link in links" :key="link.id" :class="isCurrentLink(link.id) ? 'active' : ''">
             <a :href="link.href" @click="handleLinkClick(link.id)">{{ link.text }}</a>
           </li>

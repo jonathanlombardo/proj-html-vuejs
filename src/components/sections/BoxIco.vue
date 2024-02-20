@@ -1,44 +1,17 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      boxes: [],
 
-      boxes: [
-        {
-          img: "h5-custom-icon-1.png",
-          title: "Languages",
-        },
-        {
-          img: "h5-custom-icon-2.png",
-          title: "Software",
-        },
-        {
-          img: "h5-custom-icon-3.png",
-          title: "Business",
-        },
-        {
-          img: "h5-custom-icon-4.png",
-          title: "Chemistry",
-        },
-        {
-          img: "h5-custom-icon-5.png",
-          title: "Science",
-        },
-        {
-          img: "h5-custom-icon-6.png",
-          title: "DIY&Craft",
-        },
-      ],
+      isLoading: false,
+      error: {
+        state: false,
+        text: "",
+      },
     };
-  },
-
-  props: {
-    // ...
   },
 
   methods: {
@@ -46,20 +19,37 @@ export default {
       const imgUrl = new URL("../../assets/img/" + img, import.meta.url);
       return imgUrl.href;
     },
+
+    fetchBoxes() {
+      axios
+        .get("http://localhost:3000/icoBoxes")
+        .then((res) => {
+          this.boxes = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   },
 
-  components: {},
+  emits: ["box-ico-clicked"],
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchBoxes();
   },
 };
 </script>
 
 <template>
-  <div class="row">
+  <div class="error" v-if="error.state">{{ error.text }}</div>
+  <div v-if="!isLoading && !error.state" class="row">
     <div v-for="box in boxes" class="col">
-      <div class="box-ico">
+      <div class="box-ico" @click="$emit('box-ico-clicked', box.id)">
         <img :src="getUrlImg(box.img)" :alt="`${box.title} icon`" />
         <div>
           <strong>{{ box.title }}</strong>
@@ -80,12 +70,17 @@ export default {
     width: calc(100% / 6);
   }
   .box-ico {
+    cursor: pointer;
     font-size: 1.4rem;
     padding-top: $space-l;
     padding-bottom: $space-l;
     color: $col-dark-bright4;
     background-color: $border-primary-light;
     @include flex-center($space-m, column);
+
+    &:hover {
+      opacity: 0.8;
+    }
 
     img {
       width: 50%;

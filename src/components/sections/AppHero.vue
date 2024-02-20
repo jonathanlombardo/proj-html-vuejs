@@ -93,15 +93,6 @@ export default {
 @use "../../assets/scss/partials/mixins" as *;
 @use "../../assets/scss/partials/var" as *;
 
-.error {
-  text-align: center;
-  background-color: red;
-  color: black;
-  max-width: 500px;
-  margin: auto;
-  padding: $space-m;
-}
-
 .pBottom {
   padding-bottom: $space-m;
 }

@@ -2,6 +2,15 @@
 @use "./partials/mixins" as *;
 @use "./partials/var" as *;
 
+.error {
+  text-align: center;
+  background-color: red;
+  color: black;
+  max-width: 500px;
+  margin: auto;
+  padding: $space-m;
+}
+
 .container {
   max-width: 1480px;
   padding: 0 $space-m;
