@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <button @click="emit('btn-clicked')">{{ text }}</button>
+  <button @click="$emit('btn-clicked')">{{ text }}</button>
 </template>
 
 <style lang="scss" scoped>
@@ -21,5 +21,14 @@ button {
   padding: $space-m $space-l;
   color: inherit;
   cursor: pointer;
+
+  &:hover {
+    // opacity: 0.8;
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    filter: brightness(1);
+  }
 }
 </style>
