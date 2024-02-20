@@ -33,7 +33,7 @@ export default {
   <header>
     <AppHeader>
       <template #hero>
-        <AppHero class="header-hero" />
+        <AppHero />
       </template>
     </AppHeader>
   </header>

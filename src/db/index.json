@@ -87,5 +87,18 @@
       "img": "h5-custom-icon-6.png",
       "title": "DIY&Craft"
     }
+  ],
+
+  "counters": [
+    {
+      "id": 1,
+      "count": 168,
+      "name": "user stories"
+    },
+    {
+      "id": 2,
+      "count": 347,
+      "name": "events"
+    }
   ]
 }
