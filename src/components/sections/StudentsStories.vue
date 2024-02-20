@@ -104,7 +104,6 @@ export default {
   > * {
     margin-right: auto;
     margin-left: auto;
-    // margin-bottom: $space-l;
     text-align: center;
   }
 

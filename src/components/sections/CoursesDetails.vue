@@ -1,57 +1,16 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      overviews: [],
 
-      overviews: [
-        {
-          tabTitle: "What We Do",
-          title: "Learning Possibilities",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-1.png",
-        },
-        {
-          tabTitle: "Degree Programme",
-          title: "Degree Programme",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-2.png",
-        },
-        {
-          tabTitle: "Carreer Achivements",
-          title: "Carreer Achivements",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-3.png",
-        },
-        {
-          tabTitle: "Personal Managment",
-          title: "Personal Managment",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-4.png",
-        },
-        {
-          tabTitle: "Steps To Success",
-          title: "Steps To Success",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-5.png",
-        },
-        {
-          tabTitle: "Knowledge Transfer",
-          title: "Knowledge Transfer",
-          paragraph: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ratione culpa fugiat excepturi odio autem aliquid velit aut id, vitae ab laboriosam aliquam nesciunt! Aperiam voluptatum commodi voluptatibus omnis illo!",
-          steps: ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
-          icon: "h12-tabs-icon-6.png",
-        },
-      ],
+      error: {
+        state: false,
+        text: "",
+      },
+      isLoading: false,
 
       activeIndex: 0,
     };
@@ -72,28 +31,45 @@ export default {
       const imgUrl = new URL("../../assets/img/" + img, import.meta.url);
       return imgUrl.href;
     },
+
+    fetchOverviews() {
+      axios
+        .get("http://localhost:3000/studentsOverviews")
+        .then((res) => {
+          this.overviews = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchOverviews();
   },
 };
 </script>
 
 <template>
-  <div class="row">
+  <div class="error" v-if="error.state">{{ error.text }}</div>
+  <div class="row" v-if="!isLoading && !error.state">
     <div class="col col-30">
       <div v-for="(view, index) in overviews" :class="activeIndex == index ? 'active' : ''" @click="setIndex(index)">{{ view.tabTitle }}</div>
     </div>
     <div class="col col-70">
       <h2>{{ activeView.title }}</h2>
-      <p>{{ activeView.paragraph }}</p>
+      <p class="main-p">{{ activeView.paragraph }}</p>
       <div class="steps-wrapper">
-        <ul>
+        <ul class="fa-ul">
           <li v-for="step in activeView.steps">
-            {{ step }}
+            <span class="fa-li" style="--fa-li-width: 4em"><font-awesome-icon icon="fa-solid fa-check" /></span>{{ step }}
           </li>
         </ul>
       </div>
@@ -112,9 +88,17 @@ export default {
     width: 30%;
 
     > * {
-      border: 1px solid $border-bright1;
+      border: 1px solid $border-bright2;
+      border-bottom: none;
       padding: $space-m $space-l;
       cursor: pointer;
+      font-size: 1.5rem;
+      text-transform: capitalize;
+      color: $col-dark-bright10;
+
+      &:last-child {
+        border-bottom: 1px solid $border-bright2;
+      }
 
       &.active {
         color: $col-primary-light;
@@ -126,11 +110,29 @@ export default {
     width: 70%;
 
     > * {
+      margin-bottom: $space-l;
+    }
+
+    p {
+      margin-bottom: $space-xl;
+    }
+
+    li {
       margin-bottom: $space-m;
+
+      span {
+        color: $col-primary;
+      }
     }
   }
 
+  .steps-wrapper {
+    font-size: 1.4rem;
+    color: $col-dark-bright6;
+  }
+
   img {
+    width: 150px;
     position: absolute;
     bottom: 0;
     right: 0;
