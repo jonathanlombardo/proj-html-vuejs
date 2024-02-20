@@ -5,6 +5,7 @@ import EmpoweringChildren from "./sections/EmpoweringChildren.vue";
 import StudentsStories from "./sections/StudentsStories.vue";
 import CoursesDetails from "./sections/CoursesDetails.vue";
 import PopCourses from "./sections/PopCourses.vue";
+import PricingPlans from "./sections/PricingPlans.vue";
 
 // import {store} from './store/index.js'
 
@@ -24,7 +25,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails, PopCourses },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails, PopCourses, PricingPlans },
 
   created() {
     // ...
@@ -61,6 +62,11 @@ export default {
   <section class="bg-polig">
     <div class="container">
       <PopCourses />
+    </div>
+  </section>
+  <section class="bg-polig">
+    <div class="container">
+      <PricingPlans />
     </div>
   </section>
 </template>

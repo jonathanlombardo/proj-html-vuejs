@@ -107,7 +107,6 @@ export default {
     },
 
     getCourse(index) {
-      console.log(index);
       return this.courses[this.activeIndex + index - 1];
     },
 
