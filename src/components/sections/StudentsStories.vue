@@ -1,53 +1,19 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      testimonials: [],
 
-      testimonials: [
-        {
-          pic: "testimonials-standard-1.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-        {
-          pic: "testimonials-standard-2.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-        {
-          pic: "testimonials-standard-3.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-        {
-          pic: "testimonials-standard-4.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-        {
-          pic: "testimonials-standard-5.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-        {
-          pic: "testimonials-standard-6.png",
-          story: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
-          name: "Joan Collins",
-          role: "Students",
-        },
-      ],
+      error: {
+        state: false,
+        text: "",
+      },
+      isLoading: false,
 
       activeIndex: 0,
+      autoplay: false,
     };
   },
 
@@ -62,23 +28,66 @@ export default {
       const imgUrl = new URL("../../assets/img/" + img, import.meta.url);
       return imgUrl.href;
     },
+
+    isCurrentSlide(index) {
+      return this.activeIndex == index;
+    },
+
+    goToSlide(n) {
+      this.activeIndex = n;
+    },
+
+    fetchTestimonials() {
+      axios
+        .get("http://localhost:3000/testimonials")
+        .then((res) => {
+          this.testimonials = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
+
+    startAutoplay() {
+      this.autoplay = setInterval(() => {
+        if (this.activeIndex + 1 >= this.testimonials.length) {
+          this.activeIndex = 0;
+          return;
+        }
+        this.activeIndex++;
+      }, 4000);
+    },
+
+    stopAutoplay() {
+      clearInterval(this.autoplay);
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchTestimonials();
+    this.startAutoplay();
   },
 };
 </script>
 
 <template>
-  <div class="wrapper">
+  <div class="error" v-if="error.state">{{ error.text }}</div>
+  <div v-if="!isLoading && !error.state" class="wrapper" @mouseenter="stopAutoplay()" @mouseleave="startAutoplay()">
     <img :src="getUrlImg(activeTestimonial.pic)" :alt="`${activeTestimonial.name} picture`" />
     <p>"{{ activeTestimonial.story }}"</p>
     <h3>{{ activeTestimonial.name }}</h3>
-    <div>{{ activeTestimonial.role }}</div>
-    <div class="dots">x x x</div>
+    <div class="role">{{ activeTestimonial.role }}</div>
+    <div class="dot-wrapper">
+      <font-awesome-icon v-for="(testimonial, index) in testimonials" @click="goToSlide(index)" :icon="isCurrentSlide(index) ? 'fa-regular fa-circle-dot' : 'fa-solid fa-circle'" />
+    </div>
+    <!-- <div class="dots">x x x</div> -->
   </div>
 </template>
 
@@ -89,11 +98,38 @@ export default {
 .wrapper {
   padding-top: $space-xl;
   padding-bottom: $space-xl;
+
+  color: $col-light-off;
+
   > * {
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: $space-l;
+    // margin-bottom: $space-l;
     text-align: center;
+  }
+
+  img {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: $space-l;
+  }
+
+  p {
+    margin-bottom: $space-l;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: $space-s;
+  }
+
+  .role {
+    font-size: 1.3rem;
+    margin-bottom: $space-l;
+  }
+
+  .dot-wrapper {
+    width: fit-content;
   }
 }
 </style>

@@ -121,18 +121,6 @@ export default {
   .dot-wrapper {
     position: absolute;
     bottom: $space-m;
-    font-size: 1.2rem;
-    display: flex;
-    gap: $space-m;
-
-    > * {
-      opacity: 0.5;
-      cursor: pointer;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 }
 </style>

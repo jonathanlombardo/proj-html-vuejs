@@ -100,5 +100,50 @@
       "count": 347,
       "name": "events"
     }
+  ],
+
+  "testimonials": [
+    {
+      "id": 1,
+      "pic": "instructor-img-1.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Joan Collins",
+      "role": "Students"
+    },
+    {
+      "id": 2,
+      "pic": "instructor-img-2.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Pinco Pallo",
+      "role": "Instructor"
+    },
+    {
+      "id": 3,
+      "pic": "instructor-img-3.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Joan Collins",
+      "role": "Students"
+    },
+    {
+      "id": 4,
+      "pic": "instructor-img-4.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Joan Collins",
+      "role": "Students"
+    },
+    {
+      "id": 5,
+      "pic": "instructor-img-5.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Joan Collins",
+      "role": "Students"
+    },
+    {
+      "id": 6,
+      "pic": "instructor-img-6.jpg",
+      "story": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil magnam dolores adipisci vitae quos, perferendis ipsam debitis consequatur blanditiis soluta veniam accusantium, veritatis voluptatum dignissimos dolore dolorem voluptatem laboriosam suscipit?",
+      "name": "Joan Collins",
+      "role": "Students"
+    }
   ]
 }

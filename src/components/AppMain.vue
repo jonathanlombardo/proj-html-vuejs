@@ -89,7 +89,7 @@ section {
     background-size: cover;
     background-position: center top 100px;
     background-repeat: no-repeat;
-    background-color: $bg-primary-light;
+    background-color: $bg-primary;
   }
 
   &.bg-polig {
