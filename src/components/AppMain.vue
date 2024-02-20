@@ -6,6 +6,7 @@ import StudentsStories from "./sections/StudentsStories.vue";
 import CoursesDetails from "./sections/CoursesDetails.vue";
 import PopCourses from "./sections/PopCourses.vue";
 import PricingPlans from "./sections/PricingPlans.vue";
+import AppPartners from "./sections/AppPartners.vue";
 
 // import {store} from './store/index.js'
 
@@ -25,7 +26,7 @@ export default {
     // ...
   },
 
-  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails, PopCourses, PricingPlans },
+  components: { BoxIco, HomeTutoring, EmpoweringChildren, StudentsStories, CoursesDetails, PopCourses, PricingPlans, AppPartners },
 
   created() {
     // ...
@@ -69,6 +70,11 @@ export default {
       <PricingPlans />
     </div>
   </section>
+  <section>
+    <div class="container">
+      <AppPartners />
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -79,7 +85,7 @@ section {
   margin-top: $space-xl;
 
   &.stories {
-    background-image: url(../assets/img/interactive-map-slider-img-1.png);
+    background-image: url("../assets/img/interactive-map-slider-img-1.png");
     background-size: cover;
     background-position: center top 100px;
     background-repeat: no-repeat;

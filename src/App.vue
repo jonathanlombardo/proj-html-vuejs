@@ -2,6 +2,7 @@
 import AppHeader from "./components/AppHeader.vue";
 import AppHero from "./components/sections/AppHero.vue";
 import AppMain from "./components/AppMain.vue";
+import AppFooter from "./components/AppFooter.vue";
 // import {store} from './store/index.js'
 
 export default {
@@ -20,7 +21,7 @@ export default {
     // ...
   },
 
-  components: { AppHeader, AppHero, AppMain },
+  components: { AppHeader, AppHero, AppMain, AppFooter },
 
   created() {
     // ...
@@ -29,16 +30,29 @@ export default {
 </script>
 
 <template>
-  <AppHeader class="header">
-    <template #hero>
-      <AppHero class="header-hero" />
-    </template>
-  </AppHeader>
+  <header>
+    <AppHeader>
+      <template #hero>
+        <AppHero class="header-hero" />
+      </template>
+    </AppHeader>
+  </header>
 
-  <AppMain></AppMain>
+  <main>
+    <AppMain />
+  </main>
+
+  <footer>
+    <AppFooter />
+  </footer>
 </template>
 
 <style lang="scss">
 @use "./assets/scss/global.scss";
 @use "./assets/scss/partials/var" as *;
+
+footer {
+  background-color: black;
+  color: aliceblue;
+}
 </style>
