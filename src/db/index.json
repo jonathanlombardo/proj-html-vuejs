@@ -1,0 +1,58 @@
+{
+  "headerLinks": [
+    {
+      "id": 1,
+      "text": "home",
+      "href": "#"
+    },
+    {
+      "id": 2,
+      "text": "courses",
+      "href": "#"
+    },
+    {
+      "id": 3,
+      "text": "instructors",
+      "href": "#"
+    },
+    {
+      "id": 4,
+      "text": "events",
+      "href": "#"
+    },
+    {
+      "id": 5,
+      "text": "pages",
+      "href": "#"
+    },
+    {
+      "id": 6,
+      "text": "elements",
+      "href": "#"
+    }
+  ],
+
+  "heroSlides": [
+    {
+      "id": 1,
+      "img": "h5-slide-1-background.jpg",
+      "title": "Contemporary Ideas",
+      "subTitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ullam cum optio voluptatum ut rerum?",
+      "buttonText": "register now"
+    },
+    {
+      "id": 2,
+      "img": "h5-slide-2-background.jpg",
+      "title": "Contemporary Lifes",
+      "subTitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ullam cum optio voluptatum ut rerum?",
+      "buttonText": "register now"
+    },
+    {
+      "id": 3,
+      "img": "h5-slide-3-background.jpg",
+      "title": "Contemporary Values",
+      "subTitle": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint ullam cum optio voluptatum ut rerum?",
+      "buttonText": "register now"
+    }
+  ]
+}

@@ -1,27 +1,52 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      links: [],
+      activeLinkId: 0,
+      error: {
+        state: false,
+        text: "",
+      },
+      isLoading: false,
     };
   },
 
-  props: {
-    // ...
-  },
+  emits: ["header-link-clicked"],
 
   methods: {
-    // ...
+    fetchHeaderLinks() {
+      axios
+        .get("http://localhost:3000/headerLinks")
+        .then((res) => {
+          this.links = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
+
+    handleLinkClick(id) {
+      this.activeLinkId = id;
+      this.$emit("header-link-clicked", id);
+    },
+
+    isCurrentLink(id) {
+      return this.activeLinkId == id;
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchHeaderLinks();
   },
 };
 </script>
@@ -31,16 +56,23 @@ export default {
     <div class="container">
       <app-logo img="logo-light.png" />
       <nav>
-        <ul>
-          <li><a href="#">home</a></li>
-          <li><a href="#">courses</a></li>
-          <li><a href="#">instructors</a></li>
-          <li><a href="#">events</a></li>
-          <li><a href="#">pages</a></li>
-          <li><a href="#">elements</a></li>
-          <li><a href="#">LINK</a></li>
-          <li><a href="#">LINK</a></li>
-          <li><a href="#">LINK</a></li>
+        <ul class="error" v-if="error.state">
+          <li>{{ error.text }}</li>
+        </ul>
+
+        <ul v-if="!isLoading && !error.state">
+          <li v-for="link in links" :key="link.id" :class="isCurrentLink(link.id) ? 'active' : ''">
+            <a :href="link.href" @click="handleLinkClick(link.id)">{{ link.text }}</a>
+          </li>
+          <li>
+            <a href="#"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></a>
+          </li>
+          <li>
+            <a href="#"><font-awesome-icon icon="fa-solid fa-bag-shopping" /></a>
+          </li>
+          <li>
+            <a href="#"><font-awesome-icon icon="fa-solid fa-bars" /></a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -52,6 +84,12 @@ export default {
 @use "../assets/scss/partials/mixins" as *;
 @use "../assets/scss/partials/var" as *;
 
+.error {
+  color: black;
+  background-color: red;
+  padding-left: $space-m;
+  padding-right: $space-m;
+}
 .container {
   height: $header-h;
   font-size: 1.2rem;
@@ -78,6 +116,12 @@ export default {
       height: 100%;
       display: flex;
       align-items: flex-end;
+
+      &.active {
+        // color: $col-primary-dark;
+        box-shadow: 0 5px 0 $col-light;
+        font-weight: bold;
+      }
 
       a {
         text-transform: uppercase;
