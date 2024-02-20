@@ -112,11 +112,6 @@ export default {
     max-width: 900px;
     font-size: 1.5rem;
 
-    h1 {
-      font-size: 5rem;
-      color: $col-light;
-    }
-
     .btn {
       background-color: $bg-primary;
       border: none;

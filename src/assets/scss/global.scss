@@ -12,7 +12,7 @@
 }
 
 .container {
-  max-width: 1480px;
+  max-width: 1280px;
   padding: 0 $space-m;
   margin: 0 auto;
 
@@ -26,8 +26,22 @@
   }
 }
 
+h1 {
+  font-size: 5rem;
+  color: $col-light;
+}
+
 h2 {
-  color: $col-dark-bright4;
+  font-size: 4rem;
+  color: $col-dark-bright2;
+}
+
+p {
+  font-size: 1.5rem;
+
+  &.main-p {
+    color: $col-dark-bright6;
+  }
 }
 
 // p {
