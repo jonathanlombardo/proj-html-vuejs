@@ -3,33 +3,33 @@ import AppHeader from "./components/AppHeader.vue";
 import AppHero from "./components/sections/AppHero.vue";
 import AppMain from "./components/AppMain.vue";
 import AppFooter from "./components/AppFooter.vue";
-// import {store} from './store/index.js'
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      pageY: 0,
     };
   },
 
-  props: {
-    // ...
-  },
-
   methods: {
-    // ...
+    handleScroll() {},
   },
 
   components: { AppHeader, AppHero, AppMain, AppFooter },
 
   created() {
-    // ...
+    window.addEventListener("scroll", () => {
+      this.pageY = window.scrollY;
+      console.log(window.scrollY);
+    });
   },
 };
 </script>
 
 <template>
+  <fixed-block :top="true" :active="pageY > 700" />
+  <fixed-block :cart="true" :active="pageY > 700" />
+  <fixed-block :stat="true" :active="pageY > 700" />
   <header>
     <AppHeader>
       <template #hero>
