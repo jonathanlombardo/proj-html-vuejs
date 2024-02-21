@@ -99,4 +99,21 @@ export default {
     font-size: 1.8rem;
   }
 }
+
+@media screen and (max-width: 1100px) {
+  .col {
+    width: 70%;
+    text-align: center;
+
+    &.col-image {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .col {
+    width: 100%;
+  }
+}
 </style>

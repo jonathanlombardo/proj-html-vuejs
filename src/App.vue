@@ -26,7 +26,6 @@ export default {
   created() {
     window.addEventListener("scroll", () => {
       this.pageY = window.scrollY;
-      console.log(window.scrollY);
     });
   },
 };
