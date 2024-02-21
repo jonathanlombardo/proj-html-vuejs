@@ -138,4 +138,39 @@ export default {
     right: 0;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .row {
+    img {
+      width: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .row {
+    .col-70 {
+      width: 60%;
+
+      .main-p {
+        font-size: 1.2rem;
+        margin-bottom: $space-m;
+      }
+      .steps-wrapper {
+        font-size: 1.2rem;
+      }
+    }
+
+    .col-30 {
+      width: 40%;
+      > * {
+        font-size: 1rem;
+      }
+    }
+
+    img {
+      display: none;
+    }
+  }
+}
 </style>
