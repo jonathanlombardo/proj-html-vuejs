@@ -11,6 +11,7 @@ export default {
         text: "",
       },
       isLoading: false,
+      hamMenu: false,
     };
   },
 
@@ -35,10 +36,15 @@ export default {
     handleLinkClick(id) {
       this.activeLinkId = id;
       this.$emit("header-link-clicked", id);
+      this.hamMenu = false;
     },
 
     isCurrentLink(id) {
       return this.activeLinkId == id;
+    },
+
+    handleHamClick() {
+      this.hamMenu = !this.hamMenu;
     },
   },
 
@@ -58,7 +64,7 @@ export default {
       <app-logo v-if="!isLoading && !error.state" img="logo-light.png" />
       <nav v-if="!isLoading && !error.state">
         <ul>
-          <li v-for="link in links" :key="link.id" :class="isCurrentLink(link.id) ? 'active' : ''">
+          <li class="menu" v-for="link in links" :key="link.id" :class="isCurrentLink(link.id) ? 'active' : ''">
             <a :href="link.href" @click="handleLinkClick(link.id)">{{ link.text }}</a>
           </li>
           <li>
@@ -68,7 +74,14 @@ export default {
             <a href="#"><font-awesome-icon icon="fa-solid fa-bag-shopping" /></a>
           </li>
           <li>
-            <a href="#"><font-awesome-icon icon="fa-solid fa-bars" /></a>
+            <span class="ham-wrapper">
+              <font-awesome-icon icon="fa-solid fa-bars" @click="handleHamClick()" />
+              <ul v-if="hamMenu" class="toggle-menu">
+                <li class="menu-opt" v-for="link in links" :key="link.id">
+                  <a :href="link.href" @click="handleLinkClick(link.id)">{{ link.text }}</a>
+                </li>
+              </ul>
+            </span>
           </li>
         </ul>
       </nav>
@@ -86,6 +99,37 @@ export default {
   background-color: red;
   padding-left: $space-m;
   padding-right: $space-m;
+}
+
+.ham-wrapper {
+  position: relative;
+  .toggle-menu {
+    display: none;
+    background-color: $bg-light-info;
+    height: auto;
+    position: absolute;
+    right: 0;
+    border: 1px solid $border-bright1;
+    border-bottom: none;
+
+    .menu-opt {
+      display: block;
+      color: $col-dark-bright6;
+      border-bottom: 1px solid $border-bright1;
+
+      > a {
+        padding: $space-s $space-m;
+        display: block;
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+          color: $col-light;
+          background-color: $bg-primary;
+        }
+      }
+    }
+  }
 }
 .container {
   height: $header-h;
@@ -120,11 +164,23 @@ export default {
         font-weight: bold;
       }
 
-      a {
+      > * {
         text-transform: uppercase;
         padding-bottom: 5px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .ham-wrapper {
+    .toggle-menu {
+      display: block;
+    }
+  }
+
+  nav ul li.menu {
+    display: none;
   }
 }
 </style>
