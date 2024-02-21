@@ -1,82 +1,16 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
+      planDetails: {},
 
-      planDetails: {
-        notions: [
-          {
-            type: "design",
-            key: "wDesign",
-            name: "Web Designing",
-          },
-          {
-            type: "design",
-            key: "hcDesign",
-            name: "Human-Centered Design",
-          },
-          {
-            type: "business",
-            key: "baseMarketing",
-            name: "Basic Marketing",
-          },
-          {
-            type: "programming",
-            key: "python",
-            name: "Python fo Evrybody",
-          },
-          {
-            type: "programming",
-            key: "android",
-            name: "Android Developer",
-          },
-          {
-            type: "business",
-            key: "bEnglish",
-            name: "Busines English",
-          },
-        ],
-        plans: [
-          {
-            icon: "h5-custom-icon-7.png",
-            name: "standard",
-            price: 12,
-            nCourses: 2,
-            time: "15 Days",
-            wDesign: true,
-            hcDesign: true,
-          },
-          {
-            icon: "h5-custom-icon-8.png",
-            name: "professional",
-            price: 59,
-            nCourses: 4,
-            time: "30 Days",
-            wDesign: true,
-            hcDesign: true,
-            baseMarketing: true,
-            python: true,
-          },
-          {
-            icon: "h5-custom-icon-9.png",
-            name: "advanced",
-            price: 59,
-            nCourses: 4,
-            time: "30 Days",
-            wDesign: true,
-            hcDesign: true,
-            baseMarketing: true,
-            python: true,
-            android: true,
-            bEnglish: true,
-          },
-        ],
+      error: {
+        state: false,
+        text: "",
       },
+      isLoading: false,
 
       activeIndex: 0,
     };
@@ -99,12 +33,28 @@ export default {
     goToIndex(index) {
       this.activeIndex = index;
     },
+
+    fetchPlanDetails() {
+      axios
+        .get("http://localhost:3000/planDetails")
+        .then((res) => {
+          this.planDetails = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchPlanDetails();
   },
 };
 </script>
@@ -113,7 +63,8 @@ export default {
   <div class="wrapper">
     <h2 class="text-center">Pricing Plans</h2>
     <p class="main-p text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, itaque.</p>
-    <table>
+    <div class="error" v-if="error.state">{{ error.text }}</div>
+    <table v-if="!isLoading && !error.state" class="wrapper">
       <thead>
         <tr>
           <th>Save up to 40% by paying weekly</th>
@@ -146,7 +97,7 @@ export default {
         <tr>
           <td></td>
           <td v-for="(plan, index) in planDetails.plans" @click="goToIndex(index)">
-            <app-btn class="btn" text="GET IT NOW" />
+            <app-btn class="btn" :class="isCurrentIndex(index) ? 'active' : ''" text="GET IT NOW" />
           </td>
         </tr>
       </tfoot>
@@ -162,10 +113,16 @@ export default {
 }
 
 .btn {
-  border: none;
-  background-color: $bg-primary;
-  color: $col-light;
+  border: 1px solid $border-bright2;
+  background-color: $bg-light;
+  color: $col-dark-bright10;
   font-weight: bold;
+
+  &.active {
+    background-color: $bg-primary;
+    border: none;
+    color: $col-light;
+  }
 }
 
 table {
@@ -247,6 +204,10 @@ table {
   tfoot {
     td {
       border-bottom: 1px solid $border-bright2;
+
+      &:not(:first-child) {
+        background-color: $bg-light-info;
+      }
 
       &:first-child {
         border-left: none;

@@ -293,5 +293,75 @@
       "price": "free",
       "img": "course-9-f-img.jpg"
     }
-  ]
+  ],
+
+  "planDetails": {
+    "notions": [
+      {
+        "type": "design",
+        "key": "wDesign",
+        "name": "Web Designing"
+      },
+      {
+        "type": "design",
+        "key": "hcDesign",
+        "name": "Human-Centered Design"
+      },
+      {
+        "type": "business",
+        "key": "baseMarketing",
+        "name": "Basic Marketing"
+      },
+      {
+        "type": "programming",
+        "key": "python",
+        "name": "Python fo Evrybody"
+      },
+      {
+        "type": "programming",
+        "key": "android",
+        "name": "Android Developer"
+      },
+      {
+        "type": "business",
+        "key": "bEnglish",
+        "name": "Busines English"
+      }
+    ],
+    "plans": [
+      {
+        "icon": "h5-custom-icon-7.png",
+        "name": "standard",
+        "price": 12,
+        "nCourses": 2,
+        "time": "15 Days",
+        "wDesign": true,
+        "hcDesign": true
+      },
+      {
+        "icon": "h5-custom-icon-8.png",
+        "name": "professional",
+        "price": 59,
+        "nCourses": 4,
+        "time": "30 Days",
+        "wDesign": true,
+        "hcDesign": true,
+        "baseMarketing": true,
+        "python": true
+      },
+      {
+        "icon": "h5-custom-icon-9.png",
+        "name": "advanced",
+        "price": 59,
+        "nCourses": 4,
+        "time": "30 Days",
+        "wDesign": true,
+        "hcDesign": true,
+        "baseMarketing": true,
+        "python": true,
+        "android": true,
+        "bEnglish": true
+      }
+    ]
+  }
 }
