@@ -363,5 +363,28 @@
         "bEnglish": true
       }
     ]
-  }
+  },
+
+  "partners": [
+    {
+      "name": "Study Central",
+      "logo": "h5-client-1.png"
+    },
+    {
+      "name": "Educator",
+      "logo": "h5-client-2.png"
+    },
+    {
+      "name": "TeachHub",
+      "logo": "h5-client-3.png"
+    },
+    {
+      "name": "Scholar",
+      "logo": "h5-client-4.png"
+    },
+    {
+      "name": "iAcademy",
+      "logo": "h5-client-5.png"
+    }
+  ]
 }

@@ -54,5 +54,6 @@ export default {
 footer {
   background-color: black;
   color: aliceblue;
+  margin-top: $space-xl;
 }
 </style>

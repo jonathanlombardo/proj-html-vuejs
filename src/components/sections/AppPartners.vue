@@ -1,34 +1,18 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
       // store,
       // ...
-      partners: [
-        {
-          name: "Study Central",
-          logo: "h5-client-1.png",
-        },
-        {
-          name: "Educator",
-          logo: "h5-client-2.png",
-        },
-        {
-          name: "TeachHub",
-          logo: "h5-client-3.png",
-        },
-        {
-          name: "Scholar",
-          logo: "h5-client-4.png",
-        },
-        {
-          name: "iAcademy",
-          logo: "h5-client-5.png",
-        },
-      ],
+      partners: [],
+
+      error: {
+        state: false,
+        text: "",
+      },
+      isLoading: false,
     };
   },
 
@@ -41,20 +25,39 @@ export default {
       const imgUrl = new URL("../../assets/img/" + img, import.meta.url);
       return imgUrl.href;
     },
+
+    fetchPartners() {
+      axios
+        .get("http://localhost:3000/partners")
+        .then((res) => {
+          this.partners = res.data;
+        })
+        .catch((error) => {
+          this.error.state = true;
+          this.error.text = error;
+        })
+        .finally(() => {
+          this.isLoading = false;
+        });
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading = true;
+    this.fetchPartners();
   },
 };
 </script>
 
 <template>
-  <div class="row">
+  <div class="error" v-if="error.state">{{ error.text }}</div>
+  <div class="row" v-if="!isLoading && !error.state">
     <div v-for="partner in partners" class="col">
-      <img :src="getUrlImg(partner.logo)" alt="" />
+      <a href="#">
+        <img :src="getUrlImg(partner.logo)" :alt="`${partner.name} logo`" />
+      </a>
     </div>
   </div>
 </template>
@@ -63,15 +66,26 @@ export default {
 @use "../../assets/scss/partials/var" as *;
 @use "../../assets/scss/partials/mixins" as *;
 .row {
+  padding-top: $space-xl;
+  padding-bottom: $space-s;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: $col-dark-bright15 white;
+  scrollbar-color: $border-bright6 white;
+
+  &:hover {
+    scrollbar-color: $border-bright2 white;
+  }
 
   .col {
     width: calc(100% / 4);
     flex-shrink: 0;
     img {
       margin: auto;
+      cursor: pointer;
+
+      &:hover {
+        filter: brightness(1.8);
+      }
     }
   }
 }
