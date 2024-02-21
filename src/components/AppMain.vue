@@ -60,16 +60,18 @@ export default {
       <CoursesDetails />
     </div>
   </section>
-  <section class="bg-polig">
-    <div class="container">
-      <PopCourses />
-    </div>
-  </section>
-  <section class="bg-polig">
-    <div class="container">
-      <PricingPlans />
-    </div>
-  </section>
+  <div class="bg-wrapper bg-polig">
+    <section>
+      <div class="container">
+        <PopCourses />
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <PricingPlans />
+      </div>
+    </section>
+  </div>
   <section>
     <div class="container">
       <AppPartners />
@@ -91,9 +93,8 @@ section {
     background-repeat: no-repeat;
     background-color: $bg-primary;
   }
-
-  &.bg-polig {
-    background-image: url("../assets/img/background-pattern.jpg");
-  }
+}
+.bg-polig {
+  background-image: url("../assets/img/background-pattern.jpg");
 }
 </style>

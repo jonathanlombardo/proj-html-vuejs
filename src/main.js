@@ -6,9 +6,9 @@ import AppBtn from "./components/AppBtn.vue";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faTwitter, faFacebookF, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { faPhone, faClock, faBars, faBagShopping, faMagnifyingGlass, faCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faClock, faBars, faBagShopping, faMagnifyingGlass, faCircle, faCheck, faUser, faTag } from "@fortawesome/free-solid-svg-icons";
 import { faCircleDot } from "@fortawesome/free-regular-svg-icons";
-library.add(faTwitter, faFacebookF, faInstagram, faPhone, faClock, faBars, faBagShopping, faMagnifyingGlass, faCircle, faCircleDot, faCheck);
+library.add(faTwitter, faFacebookF, faInstagram, faPhone, faClock, faBars, faBagShopping, faMagnifyingGlass, faCircle, faCircleDot, faCheck, faUser, faTag);
 
 const app = createApp(App);
 

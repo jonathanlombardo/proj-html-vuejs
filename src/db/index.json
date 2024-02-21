@@ -190,5 +190,108 @@
       "steps": ["We enrich lives through learning.", "Maximizing potential through individual attention.", "The trusted name for specialized training.", "People teach. People learn. This is where they connect."],
       "icon": "h12-tabs-icon-6.png"
     }
+  ],
+
+  "popCourses": [
+    {
+      "id": 1,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. ",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-1-f-img.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Web Designing",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-2-f-img.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Financial Modeling",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Business",
+      "price": "$20",
+      "img": "course-3-f-img.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Financial Modeling",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-4-f-img.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-5-f-img.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Web Designing",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-6-f-img.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-7-f-img.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-8-f-img.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-9-f-img.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Android Developer",
+      "teacher": "David Sanders",
+      "desc": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta similique aliquam molestiae enim quod adipisci fugiat ut incidunt consequuntur tenetur!",
+      "nTeachers": 1,
+      "tag": "Programming",
+      "price": "free",
+      "img": "course-9-f-img.jpg"
+    }
   ]
 }

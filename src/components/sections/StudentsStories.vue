@@ -87,7 +87,6 @@ export default {
     <div class="dot-wrapper">
       <font-awesome-icon v-for="(testimonial, index) in testimonials" @click="goToSlide(index)" :icon="isCurrentSlide(index) ? 'fa-regular fa-circle-dot' : 'fa-solid fa-circle'" />
     </div>
-    <!-- <div class="dots">x x x</div> -->
   </div>
 </template>
 
