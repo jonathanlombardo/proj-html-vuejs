@@ -87,4 +87,22 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 1120px) {
+  .row .col {
+    width: calc(100% / 4);
+  }
+}
+
+@media screen and (max-width: 970px) {
+  .row .col {
+    width: calc(100% / 3);
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .row .col {
+    width: calc(100% / 2);
+  }
+}
 </style>
