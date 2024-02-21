@@ -12,7 +12,13 @@ export default {
   },
 
   methods: {
-    handleScroll() {},
+    handleTopClick() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    },
   },
 
   components: { AppHeader, AppHero, AppMain, AppFooter },
@@ -27,7 +33,7 @@ export default {
 </script>
 
 <template>
-  <fixed-block :top="true" :active="pageY > 700" />
+  <fixed-block :top="true" :active="pageY > 700" @clicked="handleTopClick()" />
   <fixed-block :cart="true" :active="pageY > 700" />
   <fixed-block :stat="true" :active="pageY > 700" />
   <header>
