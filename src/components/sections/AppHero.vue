@@ -101,6 +101,7 @@ export default {
   position: relative;
   top: calc(-1 * $header-h);
   margin-bottom: calc(-1 * $header-h);
+  background-position: center;
 
   @include flex-center(0, column);
 
@@ -110,6 +111,8 @@ export default {
     text-align: center;
     width: fit-content;
     max-width: 900px;
+    padding-left: $space-m;
+    padding-right: $space-m;
     font-size: 1.5rem;
 
     .btn {
