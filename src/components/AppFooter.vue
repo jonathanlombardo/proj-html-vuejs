@@ -1,84 +1,28 @@
 <script>
-// import MyComp from './components/MyComp.vue';
-// import {store} from './store/index.js'
+import axios from "axios";
 
 export default {
   data() {
     return {
-      // store,
-      // ...
-      companyInfo: {
-        mottos: ["Providing Life Changing", "Experince Through", "Education. Class That Fit Your", "Busy Life. Closer to Home"],
+      companyInfo: {},
 
-        phone: "1-677-124-44227",
-        asidePhone: "+44 300 303 0266",
-        openingHours: "Mon-Sat 8.00 - 18.00",
+      supportLinks: [],
 
-        copyright: "Copyrights 2017 ©Mikado Themes",
-        social: [
-          {
-            name: "Twitter",
-            userID: "@iaccademy",
-            icon: "fa-brands fa-twitter",
-            href: "#",
-          },
-          {
-            name: "Instagram",
-            userID: "@iaccademy",
-            icon: "fa-brands fa-instagram",
-            href: "#",
-          },
-          {
-            name: "Facebook",
-            userID: "@iaccademy",
-            icon: "fa-brands fa-facebook-f",
-            href: "#",
-          },
-        ],
-
-        popCourses: [
-          {
-            name: "Business English",
-            teacher: "Preston Marshall",
-          },
-          {
-            name: "Social Computing",
-            teacher: "David Sanders",
-          },
-          {
-            name: "Learn Spanish",
-            teacher: "Jennie King",
-          },
-        ],
+      error: {
+        companyInfo: {
+          state: false,
+          text: "",
+        },
+        supportLinks: {
+          state: false,
+          text: "",
+        },
       },
-
-      supportLinks: [
-        {
-          text: "User Dashboard",
-          href: "#",
-        },
-        {
-          text: "Contact Us",
-          href: "#",
-        },
-        {
-          text: "FAQ",
-          href: "#",
-        },
-        {
-          text: "Course Offer",
-          href: "#",
-        },
-        {
-          text: "Events",
-          href: "#",
-        },
-      ],
+      isLoading: {
+        companyInfo: false,
+        supportLinks: false,
+      },
     };
-  },
-
-  props: {
-    // ...
   },
 
   methods: {
@@ -86,12 +30,45 @@ export default {
       const imgUrl = new URL("../assets/img/" + img, import.meta.url);
       return imgUrl.href;
     },
+
+    fetchCompanyInfo() {
+      axios
+        .get("http://localhost:3000/companyInfo")
+        .then((res) => {
+          this.companyInfo = res.data;
+        })
+        .catch((error) => {
+          this.error.companyInfo.state = true;
+          this.error.companyInfo.text = error;
+        })
+        .finally(() => {
+          this.isLoading.companyInfo = false;
+        });
+    },
+
+    fetchSupportLinks() {
+      axios
+        .get("http://localhost:3000/supportLinks")
+        .then((res) => {
+          this.supportLinks = res.data;
+        })
+        .catch((error) => {
+          this.error.supportLinks.state = true;
+          this.error.supportLinks.text = error;
+        })
+        .finally(() => {
+          this.isLoading.supportLinks = false;
+        });
+    },
   },
 
   components: {},
 
   created() {
-    // ...
+    this.isLoading.companyInfo = true;
+    this.isLoading.supportLinks = true;
+    this.fetchCompanyInfo();
+    this.fetchSupportLinks();
   },
 };
 </script>
@@ -99,7 +76,8 @@ export default {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col">
+      <div class="col error" v-if="error.companyInfo.state">{{ error.companyInfo.text }}</div>
+      <div class="col" v-if="!isLoading.companyInfo && !error.companyInfo.state">
         <div class="title">
           <app-logo img="footer-logo-1.png" />
         </div>
@@ -108,16 +86,17 @@ export default {
             <div v-for="motto in companyInfo.mottos">{{ motto }}</div>
           </li>
           <li>
-            <font-awesome-icon icon="fa-solid fa-phone" />
+            <font-awesome-icon class="info-icon" icon="fa-solid fa-phone" />
             <span>{{ companyInfo.phone }}</span>
           </li>
           <li>
-            <font-awesome-icon icon="fa-solid fa-clock" />
+            <font-awesome-icon class="info-icon" icon="fa-solid fa-clock" />
             <span>{{ companyInfo.openingHours }}</span>
           </li>
         </ul>
       </div>
-      <div class="col">
+      <div class="col error" v-if="error.companyInfo.state">{{ error.companyInfo.text }}</div>
+      <div class="col" v-if="!isLoading.companyInfo && !error.companyInfo.state">
         <div class="title">Popular Courses</div>
         <ul>
           <li v-for="course in companyInfo.popCourses">
@@ -126,7 +105,8 @@ export default {
           </li>
         </ul>
       </div>
-      <div class="col">
+      <div class="col error" v-if="error.supportLinks.state">{{ error.supportLinks.text }}</div>
+      <div class="col" v-if="!isLoading.supportLinks && !error.supportLinks.state">
         <div class="title">Support</div>
         <ul>
           <li v-for="link in supportLinks">
@@ -145,7 +125,8 @@ export default {
         </ul>
       </div>
     </div>
-    <div class="row aside">
+    <div class="error" v-if="error.companyInfo.state">{{ error.companyInfo.text }}</div>
+    <div class="row aside" v-if="!isLoading.companyInfo && !error.companyInfo.state">
       <div class="col">{{ companyInfo.copyright }}</div>
       <div class="col contacts text-end">
         <span>CALL {{ companyInfo.asidePhone }}</span>
@@ -168,17 +149,53 @@ export default {
     margin-left: auto;
   }
 }
+
+a:hover {
+  color: $col-primary-dark;
+}
 .col {
   width: calc(100% / 4);
 }
 
-.aside {
-  .contacts {
-    flex-grow: 1;
+.row {
+  padding-top: $space-xl;
+  padding-bottom: $space-xl;
+
+  font-size: 1.2rem;
+  color: $col-dark-bright11;
+
+  .title {
+    height: 40px;
+    line-height: 40px;
+    font-size: 1.7rem;
+    color: $col-light;
   }
 
-  span {
-    padding-left: $space-m;
+  .subtitle {
+    color: $col-dark-bright15;
+    font-size: 1.1em;
+  }
+
+  li {
+    margin-top: $space-m;
+    margin-bottom: $space-m;
+
+    .info-icon {
+      margin-right: $space-m;
+    }
+  }
+  &.aside {
+    padding-top: $space-l;
+    padding-bottom: $space-l;
+    border-top: 1px solid $border-bright1;
+    white-space: nowrap;
+    .contacts {
+      flex-grow: 1;
+    }
+
+    span {
+      padding-left: $space-m;
+    }
   }
 }
 </style>

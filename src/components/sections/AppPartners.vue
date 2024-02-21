@@ -4,8 +4,6 @@ import axios from "axios";
 export default {
   data() {
     return {
-      // store,
-      // ...
       partners: [],
 
       error: {
@@ -14,10 +12,6 @@ export default {
       },
       isLoading: false,
     };
-  },
-
-  props: {
-    // ...
   },
 
   methods: {

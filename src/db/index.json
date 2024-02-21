@@ -386,5 +386,73 @@
       "name": "iAcademy",
       "logo": "h5-client-5.png"
     }
+  ],
+
+  "companyInfo": {
+    "mottos": ["Providing Life Changing", "Experince Through", "Education. Class That Fit Your", "Busy Life. Closer to Home"],
+
+    "phone": "1-677-124-44227",
+    "asidePhone": "+44 300 303 0266",
+    "openingHours": "Mon-Sat 8.00 - 18.00",
+
+    "copyright": "Copyrights 2017 ©Mikado Themes",
+    "social": [
+      {
+        "name": "Twitter",
+        "userID": "@iaccademy",
+        "icon": "fa-brands fa-twitter",
+        "href": "#"
+      },
+      {
+        "name": "Instagram",
+        "userID": "@iaccademy",
+        "icon": "fa-brands fa-instagram",
+        "href": "#"
+      },
+      {
+        "name": "Facebook",
+        "userID": "@iaccademy",
+        "icon": "fa-brands fa-facebook-f",
+        "href": "#"
+      }
+    ],
+
+    "popCourses": [
+      {
+        "name": "Business English",
+        "teacher": "Preston Marshall"
+      },
+      {
+        "name": "Social Computing",
+        "teacher": "David Sanders"
+      },
+      {
+        "name": "Learn Spanish",
+        "teacher": "Jennie King"
+      }
+    ]
+  },
+
+  "supportLinks": [
+    {
+      "text": "User Dashboard",
+      "href": "#"
+    },
+    {
+      "text": "Contact Us",
+      "href": "#"
+    },
+    {
+      "text": "FAQ",
+      "href": "#"
+    },
+    {
+      "text": "Course Offer",
+      "href": "#"
+    },
+    {
+      "text": "Events",
+      "href": "#"
+    }
   ]
 }
